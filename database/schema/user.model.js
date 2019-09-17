@@ -5,13 +5,14 @@ const uniqueValidator = require('mongoose-unique-validator');
 const Schema = mongoose.Schema;
 
 let user = new Schema({
-    name: {
-        type: String
-    },
     email_id: {
         type: String,
         unique: true,
         required : true
+    },
+    salt: {
+         type: String,
+         required: true
     },
     password: {
         type: String,
@@ -19,10 +20,10 @@ let user = new Schema({
     },
     clip_content :{
         type : String,
-        required : true
+        default: ""
     }
 });
 
-user.plugin(uniqueValidator, {message: 'is already taken.'});
+user.plugin(uniqueValidator, {message: 'An account with the same emailId already exists.'});
 
 module.exports = mongoose.model('user', user);
