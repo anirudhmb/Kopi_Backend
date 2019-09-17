@@ -1,16 +1,10 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-const cors = require('cors');
-const bodyParser = require('body-parser');
 var db = require('../../database/schema/user.model.js');
 var bcrypt = require('bcrypt');
 
 let User = require('../../database/schema/user.model');
-
-
-app.use(cors());
-app.use(bodyParser.json());
 
 const saltRounds = 10;
 
@@ -49,6 +43,5 @@ router.post('/', function(req, res){
           });
      });
 });
-
 
 module.exports = router;
