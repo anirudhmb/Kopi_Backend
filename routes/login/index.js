@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 var bcrypt = require('bcrypt');
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 let User = require('../../database/schema/user.model');
 
